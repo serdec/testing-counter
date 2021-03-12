@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.3.11",
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.1.10",
+    "graphql": "^15.5.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
@@ -14,7 +16,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test-all": "yarn test-unit --watchAll=false && yarn test-integration --watchAll=false && yarn test-functional",
+    "test": "yarn test-unit",
+    "test-unit": "react-scripts test --testPathPattern='unit.test.js' ",
+    "test-integration":"react-scripts test --testPathPattern='int.test.js'",
+    "test-functional": "testcafe all src/**/*.fn.test.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "testcafe": "^1.12.0"
   }
 }
